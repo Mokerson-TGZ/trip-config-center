@@ -1,3 +1,8 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
 #Spring 整合 Redis和Solr
 server:
   port: 22001
@@ -5,6 +10,7 @@ server:
 #Mybatis配置
 #数据源配置
 spring:
+  profiles: dev
   datasource:
     username: root
     password: 123456
