@@ -18,7 +18,7 @@ spring:
     url: jdbc:mysql://localhost:3306/travel-around-city?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
-    name: provider-trip-hotel
+    name: provider-trip-airplane
   # Redis 的配置
   redis:
     database: 0
