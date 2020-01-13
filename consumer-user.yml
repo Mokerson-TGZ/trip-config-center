@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+
+server:
+  port: 10105
+eureka:
+  client:
+    # 设置为false则为客户端
+    register-with-eureka: false
+    service-url:
+      # 注册中心的地址
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/,http://eureka7004.com:7004/eureka/
+feign:
+  hystrix:
+    # 是否开启熔断
+    enabled: false
+spring:
+  profiles: dev
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 20
+        max-active: 100
+        min-idle: 5
+    timeout: 3000
+  # 设置允许多个重名的feign客户端服务名
+  main:
+    allow-bean-definition-overriding: true
+  # 静态文件请求匹配方式
+  mvc:
+    static-path-pattern: /**
+    view:
+      prefix: /
+      suffix: .jsp
+  # 修改默认的静态寻址资源目录
+  resources:
+    static-locations: classpath:/WEB-INF/jsp/,classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,/WEB-INF/jsp/

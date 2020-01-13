@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+spring:
+  profiles: dev
+
+server:
+  port: 13344
+
+spring:
+  application:
+    name:  build-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Mokerson-TGZ/trip-config-center.git
+          username: Mokerson-TGZ
+          password:

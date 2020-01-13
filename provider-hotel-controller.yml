@@ -1,0 +1,46 @@
+#Spring 整合 Redis和Solr
+server:
+  port: 22001
+
+#Mybatis配置
+#数据源配置
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/travel-around-city?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: provider-trip-hotel
+  data:
+    solr:
+      host: http://localhost:8983/solr/trip_core
+  # Redis 的配置
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 20
+        max-active: 100
+        min-idle: 5
+    timeout: 3000
+
+#SQL映射文件和实体类别名扫描
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/,http://eureka7004.com:7004/eureka/
+  instance:
+    instance-id: trip-hotel-hystrix-01   #自定义服务名称信息
+    prefer-ip-address: true     #访问路径可以显示IP地址
+
+info:
+  app.name: build-property
+  company.name: www.mokerson.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
