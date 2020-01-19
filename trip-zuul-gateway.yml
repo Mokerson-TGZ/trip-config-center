@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+server: 
+  port: 9527
+ 
+spring: 
+  application:
+    name: trip-zuul-hotel-way
+  profiles: dev
+ 
+zuul: 
+  prefix: /mokerson
+  ignored-services: "*"
+  routes: 
+    mydept.serviceId: provider-trip-hotel
+    mydept.path: /**
+ 
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka,http://eureka7003.com:7004/eureka
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true 
+ 
