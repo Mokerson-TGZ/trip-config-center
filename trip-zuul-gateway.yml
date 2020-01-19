@@ -16,7 +16,7 @@ zuul:
   ignored-services: "*"
   routes: 
     mydept.serviceId: provider-trip-hotel
-    mydept.path: /**
+    mydept.path: /trip/**
  
 eureka: 
   client: 
